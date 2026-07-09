@@ -12,8 +12,11 @@ export default function Hero() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setReady(true), 50);
-    return () => clearTimeout(timer);
+    const init = async () => {
+      await document.fonts.ready;
+      setTimeout(() => setReady(true), 200);
+    };
+    init();
   }, []);
 
   const handleSubmit = async (e) => {
