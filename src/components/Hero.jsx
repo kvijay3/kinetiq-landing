@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import TextPressure from './TextPressure.jsx';
 import GradualBlur from './GradualBlur.jsx';
@@ -9,6 +9,12 @@ export default function Hero() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +36,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center gap-20 px-6 text-center">
+    <section
+      className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center gap-20 px-6 text-center"
+      style={{ visibility: ready ? 'visible' : 'hidden' }}
+    >
       {/* Eyebrow + Headline grouped together */}
       <div className="flex w-full max-w-5xl flex-col items-center">
         {/* Eyebrow — fade in. Only "kinetiq" in SF Compact Rounded */}
