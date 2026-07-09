@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import TextPressure from './TextPressure.jsx';
 import GradualBlur from './GradualBlur.jsx';
 
-const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyFeRkJUSdqJ_QJ93WU5Gmf6rwbWN0MzM5MBStsr8FCzvTurNve69cq3_1pwD_BqU6_/exec';
+const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwJEiKDXVrs-t1hoqNF9ROd3JwyXGqEUd7xyREJJqtpVZ-JIJtXjzD_BmJ5syTsQeJH/exec';
 
 export default function Hero() {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ export default function Hero() {
       await fetch(SHEET_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ email: email.trim() }),
       });
       setSubmitted(true);
