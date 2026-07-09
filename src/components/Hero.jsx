@@ -10,6 +10,7 @@ export default function Hero() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
   const [ready, setReady] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     const init = async () => {
@@ -21,7 +22,8 @@ export default function Hero() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || submitting) return;
+    setSubmitting(true);
 
     try {
       await fetch(SHEET_WEBHOOK_URL, {
@@ -30,11 +32,11 @@ export default function Hero() {
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ email: email.trim() }),
       });
-      setSubmitted(true);
-      setError(false);
     } catch (err) {
+      // no-op
+    } finally {
       setSubmitted(true);
-      setError(false);
+      setSubmitting(false);
     }
   };
 
@@ -107,7 +109,8 @@ export default function Hero() {
               />
               <button
                 type="submit"
-                className="w-full rounded-full bg-neutral-100 px-6 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-white active:scale-[0.98] sm:w-auto"
+                disabled={submitting}
+                className="w-full rounded-full bg-neutral-100 px-6 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-white active:scale-[0.98] disabled:opacity-50 sm:w-auto"
               >
                 Join the waitlist
               </button>
