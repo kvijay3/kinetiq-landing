@@ -72,7 +72,7 @@ export default function Hero() {
         className="relative w-full max-w-md"
         initial={{ opacity: 0, filter: 'blur(12px)' }}
         animate={{ opacity: 1, filter: 'blur(0px)' }}
-        transition={{ delay: 3, duration: 0.8, ease: 'easeOut' }}
+        transition={{ delay: 1, duration: 0.8, ease: 'easeOut' }}
       >
         <AnimatePresence mode="wait">
           {!submitted ? (
