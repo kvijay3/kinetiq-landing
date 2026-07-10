@@ -57,8 +57,19 @@ export default function Hero() {
           <span style={{ fontFamily: "'Saira Condensed', sans-serif", fontWeight: 300, letterSpacing: '0.02em' }}>
             Introducing
           </span>{' '}
-          <span style={{ fontFamily: "'SF Compact Rounded', sans-serif", fontWeight: 100, fontSize: '1.15em', letterSpacing: '0.1em' }}>
-            kinetiq
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3em' }}>
+            <img
+              src="/favicon-512x512.png?v=4"
+              alt="kinetiq logo"
+              style={{
+                height: '0.85em',
+                width: 'auto',
+                filter: 'brightness(1.1) contrast(1.1) drop-shadow(0 1px 1px rgba(255,255,255,0.15)) drop-shadow(0 -1px 1px rgba(0,0,0,0.3))',
+              }}
+            />
+            <span style={{ fontFamily: "'SF Compact Rounded', sans-serif", fontWeight: 100, fontSize: '1.15em', letterSpacing: '0.1em' }}>
+              kinetiq
+            </span>
           </span>
         </motion.div>
 
@@ -105,7 +116,7 @@ export default function Hero() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full flex-1 rounded-full border border-blue-900/40 bg-blue-950/20 px-5 py-3.5 text-sm text-neutral-200 placeholder-neutral-600 outline-none transition-all duration-300 focus:border-blue-700/60 focus:bg-blue-900/20 sm:text-base"
+                className="w-full flex-1 rounded-full border border-neutral-600/40 bg-neutral-700/30 px-5 py-3.5 text-sm text-neutral-200 placeholder-neutral-500 outline-none transition-all duration-300 focus:border-neutral-400/60 focus:bg-neutral-600/30 sm:text-base"
               />
               <button
                 type="submit"
